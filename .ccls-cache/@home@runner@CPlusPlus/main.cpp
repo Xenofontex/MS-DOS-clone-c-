@@ -1,5 +1,14 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+
+void showHelp() {
+  std::cout << "Comandos disponíveis: \n";
+  std::cout << "help - mostra lista de comandos disponíveis\n";
+  std::cout << "clear - limpa a tela\n";
+  std::cout << "exit - termina o programa\n";
+  std::cout << "echo - repete a mensagem digitada\n";
+}
 
 int main() {
   std::string command;
