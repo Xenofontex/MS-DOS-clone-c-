@@ -4,11 +4,8 @@
 #include <string>
 #include <map>
 
-// Estrutura para represetar um arquivo
-struct File {
-    std::string name;
-    std::string content;
-};
+#include "File.h"
+
 
 // Estrutura pea representar um diretório
 struct Directory {

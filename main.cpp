@@ -1,19 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include "FileSystem.h"
+#include "Commands.h"
 
-void showHelp() {
-  std::cout << "Comandos disponíveis: \n";
-  std::cout << "help - mostra lista de comandos disponíveis\n";
-  std::cout << "clear - limpa a tela\n";
-  std::cout << "exit - termina o programa\n";
-  std::cout << "echo - repete a mensagem digitada\n";
-}
-
-void clearScreen() {
-  // limpa tela do usuario.
-  (void)std::system("clear");
-}
 
 void echoCommand(const std:: string& message) {
   std::cout << message << std::endl;
@@ -21,7 +11,9 @@ void echoCommand(const std:: string& message) {
 
 
 int main() {
+  FileSystem fs;
   std::string command;
+  
   while (true){
     std::cout << "C:\\> "; // Imita o comando do DOS.
     std::getline(std::cin, command);
@@ -32,6 +24,11 @@ int main() {
       showHelp();
     } else if (command == "clear"){
       clearScreen();
+    } else if (command.rfind("create", 0) == 0){
+      std::string fileName = command.substr(7);
+      fs.createFile(fileName);
+    } else if(command == "list"){
+      fs.listFiles();
     } else if (command.rfind("echo ", 0) == 0){// verifica se o comando comeca com echo.
       echoCommand(command.substr(5));
       //passa a funcao para o echoCommand
